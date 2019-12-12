@@ -14,3 +14,18 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
+github:
+  user:
+    client_id: clientid
+    client_secret: clientsecret
+    redirect_uri: redirecturi
+  manager:
+    client_id: clientid
+    client_secret: clientsecret
+    redirect_uri: redirecturi
+  api:
+    scope: USER
+
+jwt:
+  secret: test
