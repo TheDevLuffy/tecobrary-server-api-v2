@@ -12,10 +12,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class RentUser {
 
-    @Column(name = "userId")
+    @Column(name = "userId",
+            nullable = false)
     private Long userId;
 
     public RentUser(Long userId) {
         this.userId = userId;
+    }
+
+    boolean isSameUser(final Long userId) {
+        return this.userId.equals(userId);
     }
 }
