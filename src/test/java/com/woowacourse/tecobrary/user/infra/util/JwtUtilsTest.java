@@ -19,8 +19,8 @@ class JwtUtilsTest {
     private static final Logger log = LoggerFactory.getLogger(JwtUtilsTest.class);
 
     private static final String EXPIRED_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9." +
-            "eyJpZCI6IjEiLCJlbWFpbCI6Imx1ZmZ5QG1pbHppcGRldnMuY29tIiwibmFtZSI6Imx1ZmZ5IiwiYXV0aG9yaXphdGlvbiI6IktJTkciLCJhdmF0YXJVcmwiOiJodHRwczovL2F2YXRhci51cmwvMTIzIiwiaWF0IjoxNTcxMjI2MzYzLCJleHAiOjE1NzEyMjYzNjV9." +
-            "w4kRk3C-3Visj-hFlm5fGGqTMr80IZdo7W8ML2IKN8Q";
+            "eyJpZCI6IjEiLCJlbWFpbCI6Imx1ZmZ5QG1pbHppcGRldnMuY29tIiwibmFtZSI6Imx1ZmZ5IiwiYXV0aG9yaXphdGlvbiI6IktJTkciLCJhdmF0YXJVcmwiOiJodHRwczovL2F2YXRhci51cmwvMTIzIiwiaWF0IjoxNTcwMTM1NDUzLCJleHAiOjE1NzA3NDAyNTN9." +
+            "pzhqDpda841_KzY0jhQxn8HOc33d4aobQq_zvstwY9A";
 
     private String jwtToken;
     private UserJwtInfoVo userJwtInfoVo;
