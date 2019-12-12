@@ -1,4 +1,21 @@
+server:
+  port: 9090
+  servlet:
+    session:
+      persistent: false
+      timeout: 0
+
 spring:
+  application:
+    name: tecobraryapiv2
+  profiles:
+    active: local
+---
+spring:
+  profiles: local
+  cloud:
+    config:
+      enabled: false
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     show-sql: true
@@ -18,10 +35,9 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
-
-server:
-  port: 9090
-  servlet:
-    session:
-      persistent: false
-      timeout: 0
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      uri: http://localhost:9999
