@@ -29,17 +29,24 @@ public class JwtUtils implements Serializable {
     }
 
     public static String generateToken(final UserJwtInfoVo userJwtInfoVo) {
+        return doGenerateToken(jwtClaims(userJwtInfoVo), jwtHeaders());
+    }
+
+    private static Map<String, Object> jwtClaims(final UserJwtInfoVo userJwtInfoVo) {
         Map<String, Object> claims = new LinkedHashMap<>();
         claims.put("id", userJwtInfoVo.getId());
         claims.put("email", userJwtInfoVo.getEmail());
         claims.put("name", userJwtInfoVo.getName());
         claims.put("authorization", userJwtInfoVo.getAuthorization());
         claims.put("avatarUrl", userJwtInfoVo.getAvatarUrl());
+        return claims;
+    }
 
+    private static Map<String, Object> jwtHeaders() {
         Map<String, Object> headers = new LinkedHashMap<>();
         headers.put("alg", "HS256");
         headers.put("typ", "JWT");
-        return doGenerateToken(claims, headers);
+        return headers;
     }
 
     public static Boolean validateToken(final String token, final UserJwtInfoVo userJwtInfoVo) {
