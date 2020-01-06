@@ -3,7 +3,7 @@ package com.woowacourse.tecobrary.user.command.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AuthorizationTest {
@@ -11,7 +11,7 @@ class AuthorizationTest {
     @DisplayName("NONE 은 USER 권한을 가지지 않는다.")
     @Test
     void noneHasNotUserPermission() {
-        assertFalse(Authorization.NONE.hasUserPermission());
+        assertThrows(NotAuthorizedUserException.class, Authorization.NONE::hasUserPermission);
     }
 
     @DisplayName("USER 은 USER 권한을 가진다.")
@@ -35,13 +35,13 @@ class AuthorizationTest {
     @DisplayName("NONE 은 MANAGER 권한을 가지지 않는다.")
     @Test
     void noneHasNotManagerPermission() {
-        assertFalse(Authorization.NONE.hasManagerPermission());
+        assertThrows(NotAuthorizedUserException.class, Authorization.NONE::hasManagerPermission);
     }
 
     @DisplayName("USER 은 MANAGER 권한을 가지지 않는다.")
     @Test
     void userHasNotManagerPermission() {
-        assertFalse(Authorization.USER.hasManagerPermission());
+        assertThrows(NotAuthorizedUserException.class, Authorization.USER::hasManagerPermission);
     }
 
     @DisplayName("MANAGER 은 MANAGER 권한을 가진다.")

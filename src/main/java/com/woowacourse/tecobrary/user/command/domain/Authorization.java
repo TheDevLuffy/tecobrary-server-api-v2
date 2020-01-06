@@ -40,10 +40,16 @@ public enum Authorization {
     }
 
     public boolean hasUserPermission() {
-        return this != NONE;
+        if (this == NONE) {
+            throw new NotAuthorizedUserException(this);
+        }
+        return true;
     }
 
     public boolean hasManagerPermission() {
-        return this != NONE && this != USER;
+        if (this == NONE || this == USER) {
+            throw new NotAuthorizedUserException(this);
+        }
+        return true;
     }
 }
