@@ -35,6 +35,10 @@ public interface UserStatic {
     Email SAVED_USER_EMAIL = new Email(SAVED_USER_EMAIL_VALUE_AT_ID_01);
     HttpsUrl SAVED_HTTPS_URL = new HttpsUrl(SAVED_USER_AVATAR_URL_VALUE_AT_ID_01);
 
+    UserName SAVED_USER_NAME_02 = new UserName(SAVED_USER_NAME_VALUE_AT_ID_02);
+    Email SAVED_USER_EMAIL_02 = new Email(SAVED_USER_EMAIL_VALUE_AT_ID_02);
+    HttpsUrl SAVED_HTTPS_URL_02 = new HttpsUrl(SAVED_USER_AVATAR_URL_VALUE_AT_ID_02);
+
     UserGithubInfo TEST_USER_GITHUB_INFO = new UserGithubInfo(
             TEST_GITHUB_ID,
             TEST_USER_NAME,
@@ -49,6 +53,13 @@ public interface UserStatic {
             SAVED_HTTPS_URL
     );
 
+    UserGithubInfo SAVED_USER_GITHUB_INFO_02 = new UserGithubInfo(
+            SAVED_GITHUB_ID_AT_ID_02,
+            SAVED_USER_NAME_02,
+            SAVED_USER_EMAIL_02,
+            SAVED_HTTPS_URL_02
+    );
+
     GithubUserInfoVo TEST_GITHUB_USER_INFO_VO = new GithubUserInfoVo(
             TEST_GITHUB_ID,
             TEST_USER_AVATAR_URL_VALUE,
@@ -61,13 +72,23 @@ public interface UserStatic {
             SAVED_USER_NAME_VALUE_AT_ID_01
     );
 
+    GithubUserInfoVo SAVED_GITHUB_USER_INFO_VO_02 = new GithubUserInfoVo(
+            SAVED_GITHUB_ID_AT_ID_02,
+            SAVED_USER_AVATAR_URL_VALUE_AT_ID_02,
+            SAVED_USER_NAME_VALUE_AT_ID_02
+    );
+
     UserAuthorization TEST_USER_AUTHORIZATION = new UserAuthorization(Authorization.NONE);
 
     UserAuthorization SAVED_USER_AUTHORIZATION = new UserAuthorization(Authorization.KING);
 
+    UserAuthorization SAVED_USER_AUTHORIZATION_02 = new UserAuthorization(Authorization.USER);
+
     User TEST_USER = new User(TEST_USER_GITHUB_INFO, TEST_USER_AUTHORIZATION);
 
     User SAVED_USER = new User(SAVED_USER_GITHUB_INFO, SAVED_USER_AUTHORIZATION);
+
+    User SAVED_USER_02 = new User(SAVED_USER_GITHUB_INFO_02, SAVED_USER_AUTHORIZATION_02);
 
     UserJwtInfoDto SAVED_USER_JWT_INFO_VO = UserJwtInfoDto.builder()
             .id(SAVED_USER_NO)
