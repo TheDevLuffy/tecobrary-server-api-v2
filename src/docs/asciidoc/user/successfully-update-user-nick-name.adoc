@@ -6,7 +6,7 @@ include::../{snippets}/user-controller-test/successfully-update-user-nick-name/h
 
 include::../{snippets}/user-controller-test/successfully-update-user-nick-name/request-headers.adoc[]
 
-===== Request body
+===== Request Body
 
 include::../{snippets}/user-controller-test/successfully-update-user-nick-name/request-body.adoc[]
 

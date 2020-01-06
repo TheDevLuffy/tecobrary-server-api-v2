@@ -2,7 +2,7 @@
 
 include::../{snippets}/user-controller-test/successfully-count-of-user/http-request.adoc[]
 
-===== request body
+===== Request Body
 
 include::../{snippets}/user-controller-test/successfully-count-of-user/request-body.adoc[]
 
@@ -10,10 +10,10 @@ include::../{snippets}/user-controller-test/successfully-count-of-user/request-b
 
 include::../{snippets}/user-controller-test/successfully-count-of-user/http-response.adoc[]
 
-===== response body
+===== Response Body
 
 include::../{snippets}/user-controller-test/successfully-count-of-user/response-body.adoc[]
 
-===== description
+===== Request Body Description
 
 include::../{snippets}/user-controller-test/successfully-count-of-user/response-fields.adoc[]

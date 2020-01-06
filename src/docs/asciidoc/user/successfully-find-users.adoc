@@ -2,13 +2,15 @@
 
 include::../{snippets}/user-controller-test/successfully-find-users/http-request.adoc[]
 
+===== Request Headers
 
+include::../{snippets}/user-controller-test/successfully-find-users/request-headers.adoc[]
 
-===== request body
+===== Request Body
 
 include::../{snippets}/user-controller-test/successfully-find-users/request-body.adoc[]
 
-===== description
+===== Request Parmas Description
 
 include::../{snippets}/user-controller-test/successfully-find-users/request-parameters.adoc[]
 
@@ -17,10 +19,10 @@ include::../{snippets}/user-controller-test/successfully-find-users/request-para
 
 include::../{snippets}/user-controller-test/successfully-find-users/http-response.adoc[]
 
-===== response body
+===== Response Body
 
 include::../{snippets}/user-controller-test/successfully-find-users/response-body.adoc[]
 
-===== description
+===== Response Body Description
 
 include::../{snippets}/user-controller-test/successfully-find-users/response-fields.adoc[]
