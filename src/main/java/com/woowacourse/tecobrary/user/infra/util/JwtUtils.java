@@ -50,8 +50,8 @@ public class JwtUtils implements Serializable {
     }
 
     public static Boolean validateToken(final String token, final UserJwtInfoDto userJwtInfoDto) {
-        final String userNo = getUserIdFromToken(token);
-        return (userNo.equals(userJwtInfoDto.getId()) && !isTokenExpired(token));
+        final String userId = getUserId(token);
+        return (userId.equals(userJwtInfoDto.getId()) && !isTokenExpired(token));
     }
 
     public static Boolean isTokenExpired(final String token) {
@@ -63,8 +63,12 @@ public class JwtUtils implements Serializable {
         }
     }
 
-    public static String getUserIdFromToken(final String token) {
+    public static String getUserId(final String token) {
         return (String) getClaimFromToken(token, claims -> claims.get("id"));
+    }
+
+    public static String getUserAuthorization(final String token) {
+        return (String) getClaimFromToken(token, claims -> claims.get("authorization"));
     }
 
     private static String doGenerateToken(final Map<String, Object> claims, final Map<String, Object> headers) {
