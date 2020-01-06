@@ -3,8 +3,8 @@ package com.woowacourse.tecobrary.user.common;
 import com.woowacourse.tecobrary.common.model.Email;
 import com.woowacourse.tecobrary.common.model.HttpsUrl;
 import com.woowacourse.tecobrary.user.command.domain.*;
+import com.woowacourse.tecobrary.user.ui.dto.UserJwtInfoDto;
 import com.woowacourse.tecobrary.user.ui.vo.GithubUserInfoVo;
-import com.woowacourse.tecobrary.user.ui.vo.UserJwtInfoVo;
 
 public interface UserStatic {
     Long TEST_USER_NO = 2L;
@@ -69,7 +69,7 @@ public interface UserStatic {
 
     User SAVED_USER = new User(SAVED_USER_GITHUB_INFO, SAVED_USER_AUTHORIZATION);
 
-    UserJwtInfoVo SAVED_USER_JWT_INFO_VO = UserJwtInfoVo.builder()
+    UserJwtInfoDto SAVED_USER_JWT_INFO_VO = UserJwtInfoDto.builder()
             .id(SAVED_USER_NO)
             .email(SAVED_USER_EMAIL_VALUE_AT_ID_01)
             .name(SAVED_USER_NAME_VALUE_AT_ID_01)
@@ -77,7 +77,7 @@ public interface UserStatic {
             .authorization(SAVED_USER_AUTH_VALUE_AT_ID_01)
             .build();
 
-    UserJwtInfoVo TEST_USER_JWT_INFO_VO = UserJwtInfoVo.builder()
+    UserJwtInfoDto TEST_USER_JWT_INFO_VO = UserJwtInfoDto.builder()
             .id(TEST_USER_NO)
             .email(TEST_USER_EMAIL_VALUE)
             .name(TEST_USER_NAME_VALUE)
