@@ -42,10 +42,10 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
     @Test
     void successfullyFindUsers() {
         given(this.spec).
+                accept(JSON).
+                header("Authorization", generateAuthToken(SAVED_USER_02)).
                 param("page",1).
                 param("number", 10).
-                header("Authorization", generateAuthToken(SAVED_USER_02)).
-                accept(JSON).
                 filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
                         requestHeaders(
                                 headerWithName("Authorization").description("Json Web Token Auth Credentials")
@@ -86,9 +86,9 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
     void failFindUsers() {
         given(this.spec).
                 accept(JSON).
+                header("Authorization", generateAuthToken(SAVED_USER_02)).
                 param("page",6).
                 param("number", 10).
-                header("Authorization", generateAuthToken(SAVED_USER_02)).
                 filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
                         requestHeaders(
                                 headerWithName("Authorization").description("Json Web Token Auth Credentials")
@@ -113,7 +113,8 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
         given(this.spec).
                 accept(JSON).
                 header("Authorization", generateAuthToken(SAVED_USER_02)).
-                params("page","string","number", "string").
+                param("page","string").
+                param("number", "string").
                 filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
                         requestHeaders(
                                 headerWithName("Authorization").description("Json Web Token Auth Credentials")
