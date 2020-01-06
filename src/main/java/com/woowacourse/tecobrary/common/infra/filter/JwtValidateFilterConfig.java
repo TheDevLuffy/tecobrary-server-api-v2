@@ -12,7 +12,10 @@ public class JwtValidateFilterConfig {
     public FilterRegistrationBean getJwtValidateFilterRegistration() {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean(new JwtFilter());
         registrationBean.setOrder(2);
-        registrationBean.addUrlPatterns("/token/auth");
+        registrationBean.addUrlPatterns(
+                "/token/auth",
+                "/users"
+        );
         return registrationBean;
     }
 }

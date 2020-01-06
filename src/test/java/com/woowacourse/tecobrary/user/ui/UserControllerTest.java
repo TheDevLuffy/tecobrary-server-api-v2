@@ -12,6 +12,8 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.document;
@@ -42,10 +44,15 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
         given(this.spec).
                 param("page",1).
                 param("number", 10).
+                header("Authorization", generateAuthToken(SAVED_USER_02)).
                 accept(JSON).
-                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY, requestParameters(
-                        parameterWithName("page").description("page"),
-                        parameterWithName("number").description("number")),
+                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
+                        requestHeaders(
+                                headerWithName("Authorization").description("Json Web Token Auth Credentials")
+                        ),
+                        requestParameters(
+                                parameterWithName("page").description("page"),
+                                parameterWithName("number").description("number")),
                         responseFields(
                                 fieldWithPath("[0].githubId").description("id_target_githubId"),
                                 fieldWithPath("[0].email").description("id_target_email"),
@@ -78,12 +85,18 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
     @Test
     void failFindUsers() {
         given(this.spec).
+                accept(JSON).
                 param("page",6).
                 param("number", 10).
-                accept(JSON).
-                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY, requestParameters(
-                        parameterWithName("page").description("page"),
-                        parameterWithName("number").description("number")))).
+                header("Authorization", generateAuthToken(SAVED_USER_02)).
+                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
+                        requestHeaders(
+                                headerWithName("Authorization").description("Json Web Token Auth Credentials")
+                        ),
+                        requestParameters(
+                                parameterWithName("page").description("page"),
+                                parameterWithName("number").description("number")
+                        ))).
         when().
                 get(baseUrl("/users")).
         then().
@@ -98,11 +111,17 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
     @Test
     void failFindUsersInvalidParams() {
         given(this.spec).
-                params("page","string","number", "string").
                 accept(JSON).
-                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY, requestParameters(
-                        parameterWithName("page").description("page"),
-                        parameterWithName("number").description("number")))).
+                header("Authorization", generateAuthToken(SAVED_USER_02)).
+                params("page","string","number", "string").
+                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
+                        requestHeaders(
+                                headerWithName("Authorization").description("Json Web Token Auth Credentials")
+                        ),
+                        requestParameters(
+                                parameterWithName("page").description("page"),
+                                parameterWithName("number").description("number")
+                        ))).
         when().
                 get(baseUrl("/users")).
         then().
@@ -116,8 +135,14 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
     void successfullyFindUserById() {
         given(this.spec).
                 accept(JSON).
-                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY, pathParameters(
-                        parameterWithName("id").description("userId")),
+                header("Authorization", generateAuthToken(SAVED_USER_02)).
+                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
+                        requestHeaders(
+                                headerWithName("Authorization").description("Json Web Token Auth Credentials")
+                        ),
+                        pathParameters(
+                                parameterWithName("id").description("userId")
+                        ),
                         responseFields(
                                 fieldWithPath("githubId").description("id_target_githubId"),
                                 fieldWithPath("email").description("id_target_email"),
@@ -148,11 +173,16 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
         given(this.spec).
                 contentType(JSON).
                 accept(JSON).
+                header("Authorization", generateAuthToken(SAVED_USER_02)).
                 body(userNameDto).
                 filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
+                        requestHeaders(
+                                headerWithName("Authorization").description("Json Web Token Auth Credentials")
+                        ),
                         requestFields(
                                 fieldWithPath("id").description("target_user_id"),
-                                fieldWithPath("newName").description("new_name")),
+                                fieldWithPath("newName").description("new_name")
+                        ),
                         responseFields(
                                 fieldWithPath("githubId").description("id_target_githubId"),
                                 fieldWithPath("email").description("id_target_email"),
@@ -182,10 +212,16 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
         given(this.spec).
                 contentType(JSON).
                 accept(JSON).
+                header("Authorization", generateAuthToken(SAVED_USER_02)).
+                body(userAuthDto).
                 filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
+                        requestHeaders(
+                                headerWithName("Authorization").description("Json Web Token Auth Credentials")
+                        ),
                         requestFields(
                                 fieldWithPath("id").description("target_user_id"),
-                                fieldWithPath("authorization").description("new_authorization")),
+                                fieldWithPath("authorization").description("new_authorization")
+                        ),
                         responseFields(
                                 fieldWithPath("githubId").description("id_target_githubId"),
                                 fieldWithPath("email").description("id_target_email"),
@@ -193,7 +229,6 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
                                 fieldWithPath("avatarUrl").description("id_target_avatar_url"),
                                 fieldWithPath("authorization").description("id_target_authorization")
                         ))).
-                body(userAuthDto).
         when().
                 post(baseUrl("/users")).
         then().

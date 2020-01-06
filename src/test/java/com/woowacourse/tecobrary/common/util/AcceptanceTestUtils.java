@@ -1,5 +1,8 @@
 package com.woowacourse.tecobrary.common.util;
 
+import com.woowacourse.tecobrary.user.command.domain.User;
+import com.woowacourse.tecobrary.user.command.util.UserJwtDtoMapper;
+import com.woowacourse.tecobrary.user.infra.util.JwtUtils;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +28,7 @@ public class AcceptanceTestUtils {
     protected int port;
 
     @BeforeEach
-    void setUp(RestDocumentationContextProvider restDocumentation) {
+    void setUp(final RestDocumentationContextProvider restDocumentation) {
         this.spec = new RequestSpecBuilder()
                 .addFilter(documentationConfiguration(restDocumentation)
                         .operationPreprocessors()
@@ -38,7 +41,11 @@ public class AcceptanceTestUtils {
         return "http://localhost:" + port;
     }
 
-    protected String baseUrl(String path) {
+    protected String baseUrl(final String path) {
         return baseUrl() + path;
+    }
+
+    protected String generateAuthToken(final User user) {
+        return String.format("Bearer %s", JwtUtils.generateToken(UserJwtDtoMapper.toDto(user)));
     }
 }
