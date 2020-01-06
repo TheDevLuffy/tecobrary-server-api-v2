@@ -48,7 +48,7 @@ class JwtUtilsTest {
     @DisplayName("JWT 로부터 UserId 를 성공적으로 받아온다.")
     @Test
     void getUserIdFromToken() {
-        assertEquals(JwtUtils.getUserIdFromToken(jwtToken), "1");
+        assertEquals(JwtUtils.getUserId(jwtToken), "1");
     }
 
     @DisplayName("isTokenExpired 가 만료되지 않은 토큰에 대하여 false 를 반환한다.")

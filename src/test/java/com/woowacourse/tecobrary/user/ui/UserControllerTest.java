@@ -7,6 +7,7 @@ import com.woowacourse.tecobrary.user.ui.dto.UserNameDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
@@ -25,9 +26,10 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
     void successfullyCountOfUser() {
         given(this.spec).
                 accept(JSON).
-                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY, responseFields(
-                        fieldWithPath("total").description("all_user_count")
-                ))).
+                filter(document(DOCUMENTATION_OUTPUT_DIRECTORY,
+                        responseFields(
+                                fieldWithPath("total").description("all_user_count")
+                        ))).
         when().
                 get(baseUrl("/users/all")).
         then().
@@ -134,6 +136,8 @@ public class UserControllerTest extends AcceptanceTestUtils implements UserStati
     @DisplayName("[GET] /users/:id, 회원을 조회한다.")
     @Test
     void successfullyFindUserById() {
+        ReflectionTestUtils.setField(SAVED_USER_02, "id", 1L);
+
         given(this.spec).
                 accept(JSON).
                 header("Authorization", generateAuthToken(SAVED_USER_02)).
