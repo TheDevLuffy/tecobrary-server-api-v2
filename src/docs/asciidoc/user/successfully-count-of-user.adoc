@@ -6,7 +6,6 @@ include::../{snippets}/user-controller-test/successfully-count-of-user/http-requ
 
 include::../{snippets}/user-controller-test/successfully-count-of-user/request-body.adoc[]
 
-
 ===== HTTP Response
 
 include::../{snippets}/user-controller-test/successfully-count-of-user/http-response.adoc[]

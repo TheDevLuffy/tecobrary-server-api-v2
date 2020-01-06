@@ -2,23 +2,26 @@
 
 include::../{snippets}/user-controller-test/successfully-find-user-by-id/http-request.adoc[]
 
-===== request body
+===== Request Headers
+
+include::../{snippets}/user-controller-test/successfully-find-user-by-id/request-headers.adoc[]
+
+===== Request Body
 
 include::../{snippets}/user-controller-test/successfully-find-user-by-id/request-body.adoc[]
 
-===== description
+===== Request Path Params
 
 include::../{snippets}/user-controller-test/successfully-find-user-by-id/path-parameters.adoc[]
-
 
 ===== HTTP Response
 
 include::../{snippets}/user-controller-test/successfully-find-user-by-id/http-response.adoc[]
 
-===== response body
+===== Response Body
 
 include::../{snippets}/user-controller-test/successfully-find-user-by-id/response-body.adoc[]
 
-===== description
+===== Description
 
 include::../{snippets}/user-controller-test/successfully-find-user-by-id/response-fields.adoc[]

@@ -2,11 +2,15 @@
 
 include::../{snippets}/user-controller-test/successfully-update-user-nick-name/http-request.adoc[]
 
-===== request body
+===== Request Headers
+
+include::../{snippets}/user-controller-test/successfully-update-user-nick-name/request-headers.adoc[]
+
+===== Request body
 
 include::../{snippets}/user-controller-test/successfully-update-user-nick-name/request-body.adoc[]
 
-===== description
+===== Request Fields Description
 
 include::../{snippets}/user-controller-test/successfully-update-user-nick-name/request-fields.adoc[]
 
@@ -15,10 +19,10 @@ include::../{snippets}/user-controller-test/successfully-update-user-nick-name/r
 
 include::../{snippets}/user-controller-test/successfully-update-user-nick-name/http-response.adoc[]
 
-===== response body
+===== Response Body
 
 include::../{snippets}/user-controller-test/successfully-update-user-nick-name/response-body.adoc[]
 
-===== description
+===== Response Body Description
 
 include::../{snippets}/user-controller-test/successfully-update-user-nick-name/response-fields.adoc[]

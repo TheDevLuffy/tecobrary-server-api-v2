@@ -2,11 +2,15 @@
 
 include::../{snippets}/user-controller-test/fail-find-users/http-request.adoc[]
 
-===== request body
+===== Request Headers
+
+include::../{snippets}/user-controller-test/fail-find-users/request-headers.adoc[]
+
+===== Request Body
 
 include::../{snippets}/user-controller-test/fail-find-users/request-body.adoc[]
 
-===== description
+===== Description
 
 include::../{snippets}/user-controller-test/fail-find-users/request-parameters.adoc[]
 
@@ -15,6 +19,6 @@ include::../{snippets}/user-controller-test/fail-find-users/request-parameters.a
 
 include::../{snippets}/user-controller-test/fail-find-users/http-response.adoc[]
 
-===== response body
+===== Response Body
 
 include::../{snippets}/user-controller-test/fail-find-users/response-body.adoc[]
