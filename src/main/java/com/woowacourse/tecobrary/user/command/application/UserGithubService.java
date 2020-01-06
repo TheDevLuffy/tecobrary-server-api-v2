@@ -15,7 +15,7 @@ import com.woowacourse.tecobrary.user.command.application.api.GithubApiService;
 import com.woowacourse.tecobrary.user.command.domain.User;
 import com.woowacourse.tecobrary.user.command.domain.UserGithubInfo;
 import com.woowacourse.tecobrary.user.command.util.UserGithubInfoMapper;
-import com.woowacourse.tecobrary.user.command.util.UserJwtVoMapper;
+import com.woowacourse.tecobrary.user.command.util.UserJwtDtoMapper;
 import com.woowacourse.tecobrary.user.ui.dto.UserJwtInfoDto;
 import com.woowacourse.tecobrary.user.ui.vo.GithubUserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +36,9 @@ public class UserGithubService {
     public UserJwtInfoDto getUserByGithubInfo(final String githubApiAccessToken) {
         GithubUserInfoVo githubUserInfoVo = githubApiService.getGithubUserInfo(githubApiAccessToken);
         try {
-            return UserJwtVoMapper.toVo(userService.findByGithubId(githubUserInfoVo.getId()));
+            return UserJwtDtoMapper.toDto(userService.findByGithubId(githubUserInfoVo.getId()));
         } catch (NotFoundGithubUserException e) {
-            return UserJwtVoMapper.toVo(getNewUserAfterSave(githubApiAccessToken, githubUserInfoVo));
+            return UserJwtDtoMapper.toDto(getNewUserAfterSave(githubApiAccessToken, githubUserInfoVo));
         }
     }
 

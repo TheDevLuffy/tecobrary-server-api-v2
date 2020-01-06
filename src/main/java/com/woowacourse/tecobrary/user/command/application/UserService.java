@@ -13,7 +13,7 @@ package com.woowacourse.tecobrary.user.command.application;
 
 import com.woowacourse.tecobrary.user.command.domain.*;
 import com.woowacourse.tecobrary.user.command.util.UserInfoDtoMapper;
-import com.woowacourse.tecobrary.user.command.util.UserJwtVoMapper;
+import com.woowacourse.tecobrary.user.command.util.UserJwtDtoMapper;
 import com.woowacourse.tecobrary.user.ui.dto.UserAuthDto;
 import com.woowacourse.tecobrary.user.ui.dto.UserInfoDto;
 import com.woowacourse.tecobrary.user.ui.dto.UserJwtInfoDto;
@@ -52,7 +52,7 @@ public class UserService {
     }
 
     public UserJwtInfoDto findUserJwtInfoByUserNo(final String userNo) {
-        return UserJwtVoMapper.toVo(findById(userNo));
+        return UserJwtDtoMapper.toDto(findById(userNo));
     }
 
     private User findById(final String userNo) {
