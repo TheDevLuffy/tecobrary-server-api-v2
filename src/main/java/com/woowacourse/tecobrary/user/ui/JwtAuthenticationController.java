@@ -25,8 +25,8 @@ public class JwtAuthenticationController {
     @GetMapping("/token/auth")
     @CrossOrigin(allowedHeaders = {"Authorization"})
     public ResponseEntity authenticate(@RequestHeader("Authorization") final String authorization) {
-        String token = authorization.substring(authorization.indexOf(" "));
-        String userNo = JwtUtils.getUserIdFromToken(token);
+        String token = authorization.substring(authorization.indexOf(" ")).trim();
+        String userNo = JwtUtils.getUserId(token);
         UserJwtInfoDto userJwtInfoDto = userService.findUserJwtInfoByUserNo(userNo);
         return ResponseEntity.ok(new GithubApiResponseDto(userJwtInfoDto, token));
     }
